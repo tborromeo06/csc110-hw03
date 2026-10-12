@@ -1,5 +1,5 @@
 """
-Name: (put your name here)
+Name: (Thalia Borromeo)
 Peers: (add any collaborators)
 References: (anything you checked to solve this)
 """
@@ -29,7 +29,24 @@ def read_five_ints():
         # check if the int is not in the interval [0 to 10] print error
         # add the int to grades at index idx
 
-        pass
+        in_str = input("Give me the next grade in [0 to 10]:")
+
+        # Step 1: Check if input consists only of digits
+        if not in_str.isdigit():
+            print(
+                "Error in read_five_ints: input string is not for an integer"
+            )
+            exit()
+
+        num = int(in_str)
+
+        # Step 2: Check if integer is within [0, 10]
+        if num < 0 or num > 10:
+            print("Error in read_five_ints: input integer outside of range")
+            exit()
+
+        # Step 3: Assign valid integer to global grades list
+        grades[idx] = num
 
     #Anything with this indentation is NO LONGER inside the loop
 
@@ -45,7 +62,27 @@ def pick_averaging_method():
     Any other input prints
     'Error in pick_averaging_method: incorrect option picked'.
     """
-    pass
+    """Prompts user to select an averaging method (mean, median, or mode),
+
+    prints selection, calculates, and returns the result.
+    """
+    opt = input("Pick 'a' for mean, 'b' for median, 'c' for mode: ")
+
+    if opt == "a":
+        print("picked: Mean")
+        avg = statistics.mean(grades)
+        return avg
+    elif opt == "b":
+        print("picked: Median")
+        avg = statistics.median(grades)
+        return avg
+    elif opt == "c":
+        print("picked: Mode")
+        avg = statistics.mode(grades)
+        return avg
+    else:
+        print("Error in pick_averaging_method: incorrect option picked")
+        exit()
 
 # Task 3:
 #  Complete the function "pick_visualization" below:
@@ -58,7 +95,19 @@ def pick_visualization(average):
     Any other input prints
     'Error in pick_visualization: incorrect option picked'.
     """
-    pass
+    """Prompts user for visualization preference (1 for standard print,
+
+    2 for plot) and invokes the corresponding function.
+    """
+    opt = input("Pick '1' for print average, or '2' for plot average: ")
+
+    if opt == "1":
+        print_list_and_average(average)
+    elif opt == "2":
+        plot_grades(average)
+    else:
+        print("Error in pick_visualization: incorrect option picked")
+        exit()
 
 
 # ---------------------------------------
